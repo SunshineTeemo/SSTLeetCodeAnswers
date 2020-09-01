@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		936D958424FE3CDE00B11435 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D958324FE3CDE00B11435 /* main.swift */; };
+		936D958D24FE3E6900B11435 /* AnswersWithC.c in Sources */ = {isa = PBXBuildFile; fileRef = 936D958C24FE3E6900B11435 /* AnswersWithC.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,9 @@
 /* Begin PBXFileReference section */
 		936D958024FE3CDE00B11435 /* SSTLeetCodeAnswers */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SSTLeetCodeAnswers; sourceTree = BUILT_PRODUCTS_DIR; };
 		936D958324FE3CDE00B11435 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		936D958A24FE3E6900B11435 /* SSTLeetCodeAnswers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SSTLeetCodeAnswers-Bridging-Header.h"; sourceTree = "<group>"; };
+		936D958B24FE3E6900B11435 /* AnswersWithC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnswersWithC.h; sourceTree = "<group>"; };
+		936D958C24FE3E6900B11435 /* AnswersWithC.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = AnswersWithC.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,9 @@
 			isa = PBXGroup;
 			children = (
 				936D958324FE3CDE00B11435 /* main.swift */,
+				936D958B24FE3E6900B11435 /* AnswersWithC.h */,
+				936D958C24FE3E6900B11435 /* AnswersWithC.c */,
+				936D958A24FE3E6900B11435 /* SSTLeetCodeAnswers-Bridging-Header.h */,
 			);
 			path = SSTLeetCodeAnswers;
 			sourceTree = "<group>";
@@ -94,6 +101,7 @@
 				TargetAttributes = {
 					936D957F24FE3CDE00B11435 = {
 						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1110;
 					};
 				};
 			};
@@ -121,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				936D958424FE3CDE00B11435 /* main.swift in Sources */,
+				936D958D24FE3E6900B11435 /* AnswersWithC.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,10 +252,18 @@
 		936D958824FE3CDE00B11435 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Q4QBC7T73;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SSTLeetCodeAnswers/SSTLeetCodeAnswers-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -254,10 +271,17 @@
 		936D958924FE3CDE00B11435 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Q4QBC7T73;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SSTLeetCodeAnswers/SSTLeetCodeAnswers-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
