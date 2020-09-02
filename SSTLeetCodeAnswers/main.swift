@@ -20,6 +20,11 @@ func rob(_ nums: [Int]) -> Int {
         return 0
     }
     
+    
+    if nums.count == 1{
+        return nums.first!
+    }
+    
     var max = 0
     
     var secondMax = 0
@@ -69,9 +74,41 @@ func rob(_ nums: [Int]) -> Int {
     return max
 }
 
+func rob2(_ nums: [Int]) -> Int {
+    
+    
+    if nums.isEmpty {
+        return 0
+    }
+    
+    
+    if nums.count == 1{
+        return nums.first!
+    }
+    
+    
+    //不偷窃second对应index的房屋的最大金额
+    var first = nums[0]
+    
+    //表示偷窃对应index房屋的最大金额
+    var second = nums[1]
+    
+    
+    for index in 2..<nums.count {
+        
+        let temp = first
+             
+        first = max(first, second)
+        second = temp + nums[index]
+        
+    }
+ 
+    return max(first, second)
+}
 
 
-print(rob([2,1,1,2]))
+
+print(rob2([2,7,9,3,1]))
 
 
 
