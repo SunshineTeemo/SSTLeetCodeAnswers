@@ -8,6 +8,43 @@
 
 import Foundation
 
+
+ 
+
+//MARK:- 203.移除链表数据
+//https://leetcode-cn.com/problems/remove-linked-list-elements/
+
+public class ListNode {
+    public var val: Int
+    public var next: ListNode?
+    public init(_ val: Int) {
+        self.val = val
+        self.next = nil
+    }
+    
+}
+
+
+func removeElements(_ head: ListNode?, _ val: Int) -> ListNode? {
+    
+    if head == nil {
+        return nil
+    }
+    
+    if head!.val == val{
+        return removeElements(head!.next, val)
+    }else
+    {
+        head!.next = removeElements(head!.next, val)
+        
+        return head
+    }
+
+
+}
+
+
+
 //MARK:- 202.快乐数
 //https://leetcode-cn.com/problems/happy-number/
 
