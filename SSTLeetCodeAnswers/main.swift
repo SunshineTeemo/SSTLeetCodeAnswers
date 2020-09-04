@@ -8,6 +8,90 @@
 
 import Foundation
 
+//MARK:- 202.快乐数
+//https://leetcode-cn.com/problems/happy-number/
+
+
+//方法二 快慢指针
+func isHappy2(_ n: Int) -> Bool {
+
+    var slow = getNextValue(n)
+    
+    var fast = getNextValue(slow)
+    
+    while slow != 1 && slow != fast {
+        slow = getNextValue(slow)
+        
+        fast = getNextValue(getNextValue(fast))
+    }
+    
+    return slow == 1
+    
+    
+}
+func getNextValue(_ number: Int) -> Int
+{
+    var sum = 0
+    var n = number
+    
+    while n != 0 {
+           
+        let reminder = n%10
+
+        sum += reminder*reminder
+           
+        n /= 10
+
+    }
+    return sum
+}
+
+
+
+//方法一
+func isHappy(_ n: Int) -> Bool {
+
+    var array = [n]
+    
+    var number = n
+   
+    return isHappy(&number, &array)
+    
+    
+}
+
+
+func isHappy(_ number: inout Int,_ array: inout [Int] ) -> Bool{
+    
+    if number == 1{
+        return true
+    }
+    var sum = 0
+       
+    while number != 0 {
+           
+        let reminder = number%10
+
+        sum += reminder*reminder
+           
+        number /= 10
+
+    }
+    print(number,sum)
+    
+    if array.contains(sum)
+    {
+        return false
+    }else{
+           
+        array.append(sum)
+        return isHappy(&sum, &array)
+    }
+    
+}
+
+
+print(isHappy2(12))
 
 
 
@@ -108,7 +192,7 @@ func rob2(_ nums: [Int]) -> Int {
 
 
 
-print(rob2([2,7,9,3,1]))
+//print(rob2([2,7,9,3,1]))
 
 
 
