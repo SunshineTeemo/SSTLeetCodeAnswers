@@ -12,6 +12,7 @@
 #include <stdio.h>
 
 
-
+//这里写想在swift中调用的c方法
+void printHellow(void);
 
 #endif /* AnswersWithC_h */

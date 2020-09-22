@@ -9,7 +9,63 @@
 import Foundation
 
 
- 
+//printHellow()
+
+
+//MARK:- 计数质数
+//https://leetcode-cn.com/problems/count-primes/
+
+func countPrimes(_ n: Int) -> Int {
+    
+    if n <= 2 {
+        return 0
+    }
+    
+
+
+    //先假设所有数都是质数，然后排除所有合数
+    var array = Array.init(repeating: true, count: n)
+
+    var i = 2
+    while i*i <= n {
+        
+        if array[i] == true {
+            
+            var  j = i
+            
+            while i*j < n {
+                array[i*j] = false
+                
+                
+                j += 1
+            }
+    
+        }
+        
+        
+        i += 1
+    }
+    
+
+   
+    //计算剩下的质数，注意0、1不是质数
+    var count = 0
+    
+    for i in 2..<n {
+        
+        if array[i] == true {
+            count += 1
+        }
+   
+    }
+
+    return count
+
+}
+
+
+print(countPrimes(2))
+
 
 //MARK:- 203.移除链表数据
 //https://leetcode-cn.com/problems/remove-linked-list-elements/
@@ -128,7 +184,7 @@ func isHappy(_ number: inout Int,_ array: inout [Int] ) -> Bool{
 }
 
 
-print(isHappy2(12))
+//print(isHappy2(12))
 
 
 

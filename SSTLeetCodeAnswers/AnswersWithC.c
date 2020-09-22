@@ -2918,7 +2918,7 @@ int isLetterOrNumber(char s)
 void bestTimeToBuyAndSellStockII(void)
 {
     int pricesArray[] = {7,6,4,3,1};
-    printf("%d\n",maxProfitII(pricesArray, sizeof(pricesArray)/sizeof(pricesArray[0])));
+//    printf("%d\n",maxProfitII(pricesArray, sizeof(pricesArray)/sizeof(pricesArray[0])));
 
     
 }
