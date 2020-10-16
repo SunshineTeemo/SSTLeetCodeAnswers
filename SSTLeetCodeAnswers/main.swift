@@ -9,10 +9,10 @@
 import Foundation
 
 
-//printHellow()
+combinationSum2Selector();
 
 
-//MARK:- 计数质数
+//MARK:- 204.计数质数
 //https://leetcode-cn.com/problems/count-primes/
 
 func countPrimes(_ n: Int) -> Int {
@@ -64,7 +64,6 @@ func countPrimes(_ n: Int) -> Int {
 }
 
 
-print(countPrimes(2))
 
 
 //MARK:- 203.移除链表数据

@@ -40,7 +40,11 @@ struct TreeNode {
     struct TreeNode *right;
 };
 
-
+//排序
+int comp(const void *a,const void *b)
+{
+    return *(int *)a - *(int *)b;
+}
 
 
 
@@ -52,6 +56,116 @@ int getRandomInt(void){
     return rand();
 }
 
+
+#pragma mark - 40.组合总和II
+//https://leetcode-cn.com/problems/combination-sum-ii/
+
+
+/// 计算满足目标数的不重复的数据源中数据的组成方式
+/// @param candidates 数据源
+/// @param candidatesSize 数据源数组中的数据个数
+/// @param target 目标
+/// @param returnSize 指向返回数组个数的指针
+/// @param returnColumnSizes [[1,2,3,4]]这种样式的
+int** combinationSum2(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes){
+
+    int** result = (int **)malloc(sizeof(int *)*200);
+    result[0] = (int*)malloc(sizeof(int)*200);
+    *returnColumnSizes = (int *)malloc(sizeof(int)*200);
+
+    
+    
+    *returnSize = 0;
+    
+    //所以我们优先需要排序
+    
+    qsort(candidates, candidatesSize, sizeof(int), comp);
+
+    int combinationSum2Step(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes,int ** result, int startIndex,int index);
+
+    combinationSum2Step(candidates, candidatesSize, target, returnSize, returnColumnSizes,result, -1, 0);
+    
+    
+    
+        return result;
+
+}
+
+
+
+int combinationSum2Step(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes,int ** result, int startIndex,int index)
+{
+    
+    
+    if (target == 0) {
+        return  0;
+    }else if (target < 0)
+    {
+        return -1;
+    }else
+    {
+        
+        for (int i = startIndex + 1; i < candidatesSize; i++) {
+
+            result[*returnSize][index] = candidates[i];
+            
+            printf("result[%d][%d]=%d\n",*returnSize,index,candidates[i]);
+
+            int nextStepValue = combinationSum2Step(candidates, candidatesSize, target - candidates[i], returnSize, returnColumnSizes, result,i, index +1);
+            
+            if (nextStepValue == -1) {
+                return 1;
+            }else if (nextStepValue == 0)
+            {
+                //说明当前节点是终点
+                (*returnColumnSizes)[*returnSize] = index + 1;
+      
+                (*returnSize)++;
+              
+                result[*returnSize] = (int*)malloc(sizeof(int)*200);
+
+                memcpy(result[*returnSize], result[(*returnSize)-1], index*sizeof(int));
+
+                //memcpy
+                
+            }else
+            {
+                //说明当前线路正确，但是该节点不是终点
+
+            }
+            
+            
+            //去重
+            
+            while (i+1 < candidatesSize &&  candidates[i+1] == candidates[i]) {
+                i++;
+            }
+
+     
+            
+        }
+        return  1;
+  
+    }
+    
+    
+}
+
+
+
+void combinationSum2Selector(void)
+{
+   
+    
+    int array[5] = {2,5,2,1,2};
+    
+    int count = 0;
+    
+    int **returnColumnSizes = (int**)malloc(sizeof(int *)*1000);
+
+    
+    combinationSum2(array, 5, 3, &count, returnColumnSizes);
+}
 
 #pragma mark - 39. 组合总和
 //https://leetcode-cn.com/problems/combination-sum/
@@ -740,11 +854,7 @@ struct ListNode* swapPairs(struct ListNode* head){
 #pragma mark - 22. 括号生成
 //https://leetcode-cn.com/problems/generate-parentheses/
 
-//排序
-int comp(const void *a,const void *b)
-{
-    return *(int *)a - *(int *)b;
-}
+
 void generateParenthesisSelector(void)
 {
     char ** generateParenthesis(int n, int* returnSize);
