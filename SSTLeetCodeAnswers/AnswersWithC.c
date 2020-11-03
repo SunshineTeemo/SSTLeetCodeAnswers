@@ -47,15 +47,174 @@ int comp(const void *a,const void *b)
 }
 
 
+#pragma mark - 46.全排列
+//https://leetcode-cn.com/problems/permutations/
 
-void printHellow(void){
-    printf("hellow world,I am is C language");
-}
- 
-int getRandomInt(void){
-    return rand();
+void permuteStep(int* nums,int numsSize,int currentIndex,int * returnSize,int **result,int** returnColumnSizes)
+{
+    if (currentIndex >= numsSize) {
+
+        result[*returnSize] = (int *)malloc(sizeof(int)*(numsSize));
+        
+        //赋值
+        memcpy(result[*returnSize], nums, numsSize*(sizeof(int)));
+
+        
+        (*returnColumnSizes)[*returnSize] = numsSize;
+
+
+        (*returnSize)++;
+        
+        return;
+    }
+    
+    
+    
+    for (int i = currentIndex; i < numsSize; i++) {
+        
+        
+        int temp = nums[currentIndex];
+        
+        nums[currentIndex] = nums[i];
+        nums[i] = temp;
+        
+        printf("第%d行nums[%d]=%d\n",*returnSize, currentIndex,nums[currentIndex]);
+        
+        permuteStep(nums, numsSize, currentIndex+1,returnSize,result,returnColumnSizes);
+        
+        nums[i] = nums[currentIndex];
+        nums[currentIndex] = temp;
+        
+
+    }
+    
+    
 }
 
+int** permute(int* nums, int numsSize, int* returnSize, int** returnColumnSizes){
+    
+    
+    *returnSize = 1;
+    
+    int numsCount = numsSize;
+    while (numsCount >= 1) {
+        (*returnSize) *= numsCount;
+        numsCount--;
+    }
+    
+    
+    int **result = (int **)malloc(sizeof(int*)*(*returnSize));
+    
+    *returnColumnSizes = (int *)malloc(sizeof(int)*(*returnSize));
+    
+    *returnSize = 0;
+    
+    permuteStep(nums, numsSize, 0,returnSize,result,returnColumnSizes);
+    
+    
+    return result;
+
+}
+
+
+void permuteSelector(void)
+{
+    int nums[3] = {1,2,3};
+    int numsSize = 3;
+
+    int returnSize = 0;
+    int **returnColumnSizes = (int **)malloc(sizeof(int *)*6);
+    
+    permute(nums, numsSize, &returnSize, returnColumnSizes);
+    
+    
+}
+
+#pragma mark - 43. 字符串相乘
+//https://leetcode-cn.com/problems/multiply-strings/
+
+//这是乘法、乘法、乘法，不是加法、不是加法
+char * multiply(char * num1, char * num2){
+    
+    
+    
+    int length1 = (int)strlen(num1);
+    int length2 =  (int)strlen(num2);
+    
+    if ((num1[0] - '0' == 0 && length1 == 1) || (num2[0] - '0' == 0 && length2 ==1)) {
+        return "0";
+    }
+    
+
+    //+1是给终止符预留的位置
+
+    int maxLength = length1 > length2 ? 2*length1 + 1:2*length2+1;
+    
+    char *result  = (char *)malloc(sizeof(char)*maxLength);
+
+    int resultLength = 0;
+
+    //进位部分
+    int carryBit = 0;
+    for (int i = length1 - 1; i >= 0; i--) {
+        
+        int index = 0;
+        for (int j = length2 -1; j >= 0; j--) {
+            
+
+            index = (maxLength - 1)- ( ((length1-1)- i)+ ((length2-1)- j));
+            
+
+            int value = carryBit + (num1[i] - '0')*(num2[j] - '0');
+            
+            if (result[index] -'0' >= 0) {
+                value += result[index] - '0';
+            }
+            
+            result[index] = value%10 + '0';
+            
+            printf("result[%d]:%c\n",index,result[index]);
+            
+            carryBit = value/10;
+
+        }
+        
+        if (carryBit != 0) {
+            result[index-1] = carryBit + '0';
+            
+            printf("result[%d]:%c\n",index-1,result[index-1]);
+
+            carryBit = 0;
+            
+            resultLength = resultLength > maxLength - (index - 1 )? resultLength :  maxLength - (index - 1 );
+
+        }else{
+            resultLength = resultLength >  maxLength - index  ? resultLength :  maxLength - index;
+
+        }
+        
+    }
+    
+
+
+    
+    for (int i = 0 ; i < resultLength; i++) {
+        result[i] = result[maxLength - resultLength + i];
+        
+        printf("%d:%c\n",i,result[i]);
+    }
+    result[resultLength] = '\0';
+
+    
+    
+    
+    return result;
+
+}
+void multiplySelector(void)
+{
+    printf("%s\n", multiply("123", "456"));
+}
 
 #pragma mark - 40.组合总和II
 //https://leetcode-cn.com/problems/combination-sum-ii/

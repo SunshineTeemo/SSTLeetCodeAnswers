@@ -9,7 +9,7 @@
 import Foundation
 
 
-combinationSum2Selector();
+permuteSelector();
 
 
 //MARK:- 204.计数质数
