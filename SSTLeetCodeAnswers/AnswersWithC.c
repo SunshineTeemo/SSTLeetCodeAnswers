@@ -46,7 +46,103 @@ int comp(const void *a,const void *b)
     return *(int *)a - *(int *)b;
 }
 
+#pragma mark - 47.全排列2
+//https://leetcode-cn.com/problems/permutations-ii/
+void permuteUniqueSelector(void)
+{
+    int** permuteUnique(int* nums, int numsSize, int* returnSize, int** returnColumnSizes);
+    
+    int nums[4] = {1,2,1,3};
+    
+    int returnSize = 0;
+    
+    int** returnColumnSizes = (int**)malloc(sizeof(int*)*200);
+    
+    permuteUnique(nums, 4, &returnSize, returnColumnSizes);
+    
+    
+}
 
+
+void permuteUniqueStep(int* nums,int numsSize, int* returnSize,int** returnColumnSizes,int** result,int startIndex)
+{
+    
+    if (startIndex >= numsSize) {
+        
+        //这里相当于一条路已经走到底了，一个符合条件的数组已经形成
+        result[*returnSize] = (int *)malloc(sizeof(int)*numsSize);
+        memcpy(result[*returnSize], nums, sizeof(int)*numsSize);
+        (*returnColumnSizes)[*returnSize] = numsSize;
+        
+        (*returnSize)++;
+        
+        return;
+        
+    }
+    
+    
+    for (int i = startIndex; i < numsSize; i++) {
+        
+        //去重操作
+        while (i+1 < numsSize && nums[i+1] == nums[i]) {
+            
+            i++;
+        }
+        
+        //startIndex表示处理后的i下标的数，i下标的数表示需要摆放位置的数
+        int temp = nums[i];
+        
+        //之所以要把从startIndex到i-1的数据全部往后移一位，而不是直接替换startIndex和i的两个数，是为了更好的去重，避免相同的数被其他数分割开，导致去重失败。
+
+        for (int j = i; j > startIndex; j--) {
+            
+            nums[j] = nums[j-1];
+            
+        }
+        nums[startIndex] = temp;
+        
+        
+        
+        permuteUniqueStep(nums, numsSize, returnSize, returnColumnSizes, result, startIndex+1);
+        
+        //撤销位置变换
+        
+        for (int j = startIndex; j < i; j++) {
+            nums[j] = nums[j+1];
+        }
+        nums[i] = temp;
+    
+        
+        
+        
+        
+    }
+    
+}
+
+int** permuteUnique(int* nums, int numsSize, int* returnSize, int** returnColumnSizes){
+    
+    
+    *returnSize = 1;
+    
+    int numsCount = numsSize;
+    while (numsCount >= 1) {
+        (*returnSize) *= numsCount;
+        numsCount--;
+    }
+    
+    int** result = (int**)malloc(sizeof(int)*(*returnSize));
+    *returnColumnSizes = (int*)malloc(sizeof(int)*(*returnSize));
+    
+    //先排序才能更好的筛选掉重复的数据
+    qsort(nums, numsSize, sizeof(int), comp);
+
+    *returnSize = 0;
+    permuteUniqueStep(nums, numsSize, returnSize, returnColumnSizes, result,0);
+    
+    return result;
+
+}
 #pragma mark - 46.全排列
 //https://leetcode-cn.com/problems/permutations/
 

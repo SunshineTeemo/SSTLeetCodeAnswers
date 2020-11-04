@@ -15,8 +15,7 @@
 //这里写想在swift中调用的c方法
 
 
-//void combinationSum2Selector(void);
-void permuteSelector(void);
+void permuteUniqueSelector(void);
 
 //void printHellow(void);
 
