@@ -9,7 +9,7 @@
 import Foundation
 
 
-permuteUniqueSelector();
+rotateSelector();
 
 
 //MARK:- 204.计数质数

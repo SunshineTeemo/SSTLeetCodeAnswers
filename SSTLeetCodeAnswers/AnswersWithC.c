@@ -46,6 +46,79 @@ int comp(const void *a,const void *b)
     return *(int *)a - *(int *)b;
 }
 
+#pragma mark - 48.旋转图像
+//https://leetcode-cn.com/problems/rotate-image/
+
+void rotateSelector(void)
+{
+    int count  = 4;
+    
+    int ** marix = (int**)malloc(sizeof(int *)*count);
+    
+    int *matrixColSize = (int *)malloc(sizeof(int)*count);
+    for (int i = 0; i < count; i++) {
+        
+        
+        marix[i] = (int *)malloc(sizeof(int)*count);
+        
+        for (int j = 0; j < count; j++) {
+            
+            
+            marix[i][j] = i*count + j;
+            
+            printf("数据源matrix[%d][%d]=%d\n",i,j,marix[i][j]);
+
+            
+        }
+    }
+    
+    
+    void rotateII(int** matrix, int matrixSize, int* matrixColSize);
+    rotateII(marix, count, matrixColSize);
+    
+}
+
+void rotateII(int** matrix, int matrixSize, int* matrixColSize){
+    
+    for (int i = 0; i < matrixSize; i++) {
+        
+        
+        for (int j = i; j < matrixSize - i -1; j++) {
+ 
+            int targetJ = matrixSize - 1- i;
+            int targetI = j;
+
+            int temp = matrix[i][j];
+           
+            do {
+                
+                
+                matrix[i][j] = matrix[targetI][targetJ];
+                
+                matrix[targetI][targetJ] = temp;
+                
+                printf("matrix[%d][%d]=%d\n",targetI,targetJ,matrix[targetI][targetJ]);
+                
+                int tempJ = targetJ;
+                
+                targetJ = matrixSize -1 - targetI;
+                targetI = tempJ;
+                
+                temp = matrix[i][j];
+
+                
+                    
+            } while ( !(targetI == i && targetJ == j ));
+            
+  
+
+        }
+        
+    }
+
+}
+
+
 #pragma mark - 47.全排列2
 //https://leetcode-cn.com/problems/permutations-ii/
 void permuteUniqueSelector(void)
