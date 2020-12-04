@@ -15,8 +15,7 @@
 //这里写想在swift中调用的c方法
 
 
-void rotateSelector(void);
-
+void findMaxSumSelector(void);
 //void printHellow(void);
 
 #endif /* AnswersWithC_h */

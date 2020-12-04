@@ -16,6 +16,7 @@
 
 #include <stdlib.h>
 #include <limits.h>
+#include<time.h>
 
 
 
@@ -44,6 +45,127 @@ struct TreeNode {
 int comp(const void *a,const void *b)
 {
     return *(int *)a - *(int *)b;
+}
+
+void findMaxSumSelector(void)
+
+{
+    
+    int size = 365;
+
+    int array[365] = {0};
+    
+    for (int i = 0; i < size; i++) {
+        array[i] = arc4random()%10000;
+        printf("%d:%d\n",i,array[i]);
+
+    }
+    
+    int findMaxSum(int *array,int size);
+    printf("index:%d\n",findMaxSum(array, size));
+    
+    
+    int judgeFindMaxSum(int *array,int size);
+    
+    printf("judgeindex:%d\n",judgeFindMaxSum(array, size));
+
+    
+    
+}
+
+
+
+#pragma mark - 计算365天中，和最大的连续7天
+//校验对错的
+int judgeFindMaxSum(int *array,int size)
+{
+   
+    clock_t start,finish;
+    
+    start=clock();
+
+    
+    int index = 0;
+    int sum = 0;
+    
+    for (int i = 0 ; i < size -6; i++) {
+        
+        int sum2 = array[i] + array[i+1]+ array[i+2] + array[i+3]+ array[i+4] + array[i+5]+ array[i+6];
+        
+        if (sum2 >= sum) {
+            sum = sum2;
+            index = i;
+            
+        }
+        
+    }
+    
+    finish=clock();    //结束
+    double time = (double)(finish-start)/CLOCKS_PER_SEC;//计算运行时间
+    printf("judgeFindMaxSumtime=%lf\n",time);//输出运行时间
+    
+    return index;
+    
+    
+    
+}
+
+int findMaxSum(int *array,int size)
+{
+    
+    clock_t start,finish;
+    
+    start=clock();
+
+
+    int i= 0;
+    int j = 7;
+    int gap = 0;
+    
+    while (j <= size - 1) {
+        if (array[j] - array[j - 7] + gap >= 0) {
+            i = j - 6;
+            gap = 0;
+            
+        }else{
+            gap = gap + array[j] - array[j - 7];
+            
+        }
+
+        j++;
+        
+    }
+    
+    finish=clock();    //结束
+    double time = (double)(finish-start)/CLOCKS_PER_SEC;//计算运行时间
+    printf("findMaxSum=%lf\n",time);//输出运行时间
+
+    return i;
+}
+
+#pragma mark - 49. 字母异位词分组
+//https://leetcode-cn.com/problems/group-anagrams/
+//字母异位词指字母相同，但排列不同的字符串。
+char *** groupAnagrams(char ** strs, int strsSize, int* returnSize, int** returnColumnSizes){
+
+    char *** result = (char ***)malloc(sizeof(char **)*strsSize);
+    
+    *returnSize = 0;
+    *returnColumnSizes = (int *)malloc(sizeof(int)*strsSize);
+    
+    
+    for (int i = 0; i < strsSize; i++) {
+        
+        
+        
+        
+//        result[i] = (char **)malloc(sizeof(char*)*strsSize);
+        
+        result[i][0] = strs[i];
+        
+    }
+    
+    return result;
 }
 
 #pragma mark - 48.旋转图像
