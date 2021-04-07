@@ -46,7 +46,129 @@ int comp(const void *a,const void *b)
 {
     return *(int *)a - *(int *)b;
 }
+#pragma mark - 每K步反转链表
 
+void resertLine2(void)
+{
+    struct ListNode *createList (int n);
+
+   struct ListNode *list = createList(8);
+
+    void printListNodeValue(struct ListNode *list);
+
+
+    printListNodeValue(list);
+
+    struct ListNode * resertList2(struct ListNode *list,int step);
+
+    printListNodeValue(resertList2(list,9));
+
+}
+struct ListNode * resertList2(struct ListNode *list,int step)
+{
+    //已经到底
+    if (!list) {
+        return list;
+    }
+
+    //首先判断剩下的链表还有多少层
+    int gap = 0;
+
+    struct ListNode *newList = list;
+
+    struct ListNode *temp = list;
+
+
+    while (temp && gap < step) {
+        gap++;
+        temp = temp ->next;
+
+    }
+    list = newList;
+
+
+    if (gap < step) {
+        return newList;
+    }else{
+
+        gap = 0;
+        while (list && gap < step) {
+
+            temp = newList;
+
+            newList = list;
+            newList->next = temp;
+
+
+            list = list->next;
+
+            gap++;
+
+        }
+
+
+
+
+        list->next = resertList2(list->next, step);
+    }
+
+
+    return newList;
+}
+
+
+#pragma mark - 反转链表
+
+
+struct ListNode * resertList(struct ListNode *list)
+{
+
+    if (!list) {
+        return list;
+    }
+
+    struct ListNode *newList = NULL;
+    while (list) {
+
+
+        struct ListNode *temp = newList;
+
+
+        newList = list;
+
+
+        newList->next = temp;
+
+
+        list = list->next;
+
+    }
+
+
+    return newList;
+
+}
+void resertLine(void)
+{
+    struct ListNode *createList (int n);
+
+   struct ListNode *list = createList(8);
+
+    void printListNodeValue(struct ListNode *list);
+
+
+    printListNodeValue(list);
+
+
+    printListNodeValue(resertList(list));
+
+}
+
+
+
+#pragma mark - 计算365天中，和最大的连续7天
+
+/// 寻找一组数中和最大的7个数
 void findMaxSumSelector(void)
 
 {
@@ -75,7 +197,6 @@ void findMaxSumSelector(void)
 
 
 
-#pragma mark - 计算365天中，和最大的连续7天
 //校验对错的
 int judgeFindMaxSum(int *array,int size)
 {
@@ -3368,47 +3489,7 @@ int singleNumber(int* nums, int numsSize){
     
     
     
-//    if (numsSize == 0) {
-//        return 0;
-//    }
-//
-//    if (numsSize == 1) {
-//        return nums[0];
-//    }
-//
-//    int i = 0;
-//    int j = 1;
-//    int tap = 0;
-//
-//    while (j < numsSize) {
-//
-//        int frontNumber = nums[i];
-//
-//        int backNumber = nums[j];
-//
-//        if (frontNumber == backNumber) {
-//
-//            int bridge = nums[i+1];
-//            nums[++i] = backNumber;
-//            nums[j] = bridge;
-//
-//            i++;
-//            j = i + 1;
-//        }else{
-//
-//
-//
-//            if (nums[j] == nums[j-1]) {
-//
-//            }
-//
-//             j = j + 1;
-//
-//        }
-//
-//    }
-//
-//    return nums[i];
+
 }
 #pragma mark - 125.验证回文串
 bool isPalindromeString(char * s){
@@ -4589,10 +4670,12 @@ void printListNodeValue(struct ListNode *list)
 {
     
     while (list) {
-        printf("%d",list->val);
+        printf("%d->",list->val);
         
         list = list->next;
     }
+
+    printf("\n");
     
 }
 
