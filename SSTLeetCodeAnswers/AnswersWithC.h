@@ -16,7 +16,7 @@
 
 
 
-void resertLine2(void);
+void findTheWinnerSelector();
 
 
 

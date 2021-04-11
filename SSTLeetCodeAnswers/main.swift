@@ -9,7 +9,7 @@
 import Foundation
 
 
-resertLine2()
+findTheWinnerSelector()
 
 //MARK:- 204.计数质数
 //https://leetcode-cn.com/problems/count-primes/

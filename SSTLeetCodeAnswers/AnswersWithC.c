@@ -46,6 +46,171 @@ int comp(const void *a,const void *b)
 {
     return *(int *)a - *(int *)b;
 }
+
+int minSideJumps(int* obstacles, int obstaclesSize){
+
+    int count = 0;
+    int line = 2;
+    for (int i = 1; i < obstaclesSize - 1; i++) {
+
+
+        if (obstacles[i] == 0) {
+            continue;
+        }else if (obstacles[i] == line)
+        {
+            count ++;
+
+            if (obstacles[i+1] == ) {
+                <#statements#>
+            }
+
+        }
+
+
+    }
+
+    return count;
+}
+
+
+int findTheWinner(int n, int k){
+
+
+    //0代表这个index+1 上的小伙伴还在，1代表已经不在了
+    int a[500] = {0};
+
+    int last  = n;
+
+    int index = 0;
+
+    int step = 0;
+
+    while (last >= 1) {
+
+            if (a[index] == 0) {
+
+                if (last == 1) {
+                    return index + 1;
+                }
+
+                step ++;
+
+                if (step == k ) {
+                    a[index] = 1;
+                    last --;
+                    step = 0;
+
+                }
+            }
+
+            if (index == n - 1) {
+                index = 0;
+            }else{
+                index ++;
+
+            }
+
+    }
+
+
+    return index + 1;
+
+}
+
+void findTheWinnerSelector(void)
+{
+
+    printf("%d\n",findTheWinner(6, 5));
+
+}
+#pragma mark - 20210410
+
+void storeWaterSelector(){
+    int a[3] = {9,1,1};
+    int b[3] = {9,0,2};
+
+    printf("count : %d\n",storeWater(a, 3, b, 3));
+
+}
+
+int value(int a, int b)
+{
+
+
+    if (a <= 0) {
+        return 0;
+    }
+
+    int value = ( a/b + ((a%b == 0) ? 0: 1));
+    printf("%d\n",value);
+    return value;
+
+
+}
+int arraySign(int* nums, int numsSize){
+
+    int result = 1;
+
+    for (int i = 0; i < numsSize; i++) {
+
+        if (nums[i] == 0) {
+            result = 0;
+            break;
+        }else if (nums[i] < 0)
+        {
+            result *= -1;
+        }
+    }
+
+    return result;
+
+}
+int maxValue( int a, int b)
+{
+    return a > b? a:b;
+}
+int minValue( int a,int b)
+{
+    return a < b? a : b;
+}
+
+int storeWater(int* bucket, int bucketSize, int* vat, int vatSize){
+
+    int max = 0;
+    for (int i = 0; i < bucketSize; i++) {
+        max = bucket[i] > max ? bucket[i] : max;
+
+    }
+
+    for (int i = 0; i < bucketSize; i++) {
+        max = vat[i] > max ? vat[i] : max;
+
+    }
+
+    if (max == 0) {
+        return 0;
+    }
+
+    int ans = INT_MAX;
+
+    //这题的逻辑是这样的，假设倒水操作的次数就是i，我们需要升杯多少次
+    for (int i = 1; i <= 10000; i++) {
+        int sum = i;
+
+        for (int j = 0; j < vatSize; j++) {
+            sum += maxValue(0,(vat[j]+i-1)/i - bucket[j]);
+        }
+
+        ans = minValue(ans,sum);
+    }
+    return ans;
+
+
+
+
+}
+
+
 #pragma mark - 每K步反转链表
 
 void resertLine2(void)
