@@ -47,30 +47,162 @@ int comp(const void *a,const void *b)
     return *(int *)a - *(int *)b;
 }
 
-int minSideJumps(int* obstacles, int obstaclesSize){
+//5774. 使用服务器处理任务 未写完
+int* assignTasks(int* servers, int serversSize, int* tasks, int tasksSize, int* returnSize){
 
-    int count = 0;
-    int line = 2;
-    for (int i = 1; i < obstaclesSize - 1; i++) {
+    *returnSize = tasksSize;
+
+    int *result =  (int *)malloc(sizeof(int) * tasksSize);
+
+    //服务器状态函数
+    int *timeArray =  (int *)malloc(sizeof(int) * serversSize);
+
+    memset(timeArray, 0, sizeof(int)*serversSize);
+
+    int time = 0;
+    for (int i = 0; i < tasksSize ; i ++) {
+
+        int min = 200000;
+        int index = 0;
+
+        for (int j = 0; j < serversSize; j++) {
+            //对应的服务器是空闲的
+            if (timeArray[j] <= time) {
 
 
-        if (obstacles[i] == 0) {
-            continue;
-        }else if (obstacles[i] == line)
-        {
-            count ++;
-
-            if (obstacles[i+1] == ) {
-                <#statements#>
             }
+        }
+
+
+
+    }
+
+
+
+    return result;
+}
+
+//5773. 插入后的最大值
+
+
+void maxValue2Selector(void)
+{
+    char * maxValue2(char * n, int x);
+    printf("%s\n",maxValue2("-444", 3));
+}
+char * maxValue2(char * n, int x){
+
+    char *result  = (char *)malloc(sizeof(char)*(strlen(n)+ 2));
+
+    int j = 0;
+    int isNegative = false;
+    for (int i = 0; i < strlen(n); i++) {
+
+        int v = n[i] - '0';
+        if (i == 0 && n[i] == '-') {
+            result[j] = '-';
+
+            j++;
+            isNegative = true;
+        }else{
+            if (!isNegative) {
+
+                if (x > v && x != 0) {
+                    result[j] = x + '0';
+                    j++;
+                    i--;
+                    x = 0;
+                }else{
+
+                    result[j] = n[i];
+                    j++;
+                }
+
+
+            }else{
+                if (x < v && x != 0) {
+                    result[j] =  x + '0';
+                    j++;
+                    i--;
+                    x = 0;
+
+                }else{
+
+                    result[j] = n[i];
+                    j++;
+                }
+            }
+
 
         }
 
 
     }
 
-    return count;
+    if (x != 0) {
+        result[strlen(n)] = x + '0';
+    }
+
+    result[strlen(n) + 1] = '\0';
+    return result;
+
 }
+
+//5772. 检查某单词是否等于两单词之和
+
+
+void isSumEqualSelector(void)
+{
+    bool isSumEqual(char * firstWord, char * secondWord, char * targetWord);
+
+    printf("是否相同：%s\n",isSumEqual("aaa", "a", "aaaa") == true ? "相同":"不相同");
+
+
+}
+
+bool isSumEqual(char * firstWord, char * secondWord, char * targetWord){
+
+    int caculateCharSumValue(char *s);
+
+
+    return caculateCharSumValue(targetWord) == caculateCharSumValue(firstWord) + caculateCharSumValue(secondWord);
+}
+
+int caculateCharSumValue(char *s)
+{
+    int sum = 0;
+
+    for (int i = 0; i < (int)strlen(s); i++) {
+        sum = sum*10 + (s[i] - 'a');
+    }
+
+    return sum;
+}
+
+//int minSideJumps(int* obstacles, int obstaclesSize){
+//
+//    int count = 0;
+//    int line = 2;
+//    for (int i = 1; i < obstaclesSize - 1; i++) {
+//
+//
+//        if (obstacles[i] == 0) {
+//            continue;
+//        }else if (obstacles[i] == line)
+//        {
+//            count ++;
+//
+//            if (obstacles[i+1] == ) {
+//                <#statements#>
+//            }
+//
+//        }
+//
+//
+//    }
+//
+//    return count;
+//}
 
 
 int findTheWinner(int n, int k){

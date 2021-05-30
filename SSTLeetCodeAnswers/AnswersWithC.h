@@ -16,7 +16,7 @@
 
 
 
-void findTheWinnerSelector();
+void maxValue2Selector();
 
 
 
