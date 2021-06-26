@@ -47,6 +47,43 @@ int comp(const void *a,const void *b)
     return *(int *)a - *(int *)b;
 }
 
+//5784. 重新分配字符使所有字符串都相等
+bool makeEqual(char ** words, int wordsSize){
+
+
+
+    int array[26] = {0};
+
+    for (int  i = 0; i < wordsSize; i++) {
+
+
+
+        for (int j = 0; j < (int)strlen(words[i]); j++) {
+
+            array[words[i][j] - 'a'] ++;
+
+            printf("array[%d]:%d\n",words[i][j] - 'a',array[words[i][j] - 'a']);
+        }
+
+    }
+
+
+    for (int i = 0; i < 26 ; i++) {
+
+
+        int v = array[i];
+
+        if (v%wordsSize != 0) {
+            return false;
+        }
+
+    }
+
+    return true;
+
+
+}
+
 //5774. 使用服务器处理任务 未写完
 int* assignTasks(int* servers, int serversSize, int* tasks, int tasksSize, int* returnSize){
 
