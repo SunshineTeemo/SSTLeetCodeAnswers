@@ -8,8 +8,10 @@
 
 import Foundation
 
-
+//调用方法的入口
 maxValue2Selector()
+
+testBubbleSort()
 
 //MARK:- 204.计数质数
 //https://leetcode-cn.com/problems/count-primes/
