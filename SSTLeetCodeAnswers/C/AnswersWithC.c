@@ -1,11 +1,3 @@
-//
-//  AnswersWithC.c
-//  SSTLeetCodeAnswers
-//
-//  Created by 梅琰培 on 9/1/20.
-//  Copyright © 2020 SunshineTeemo. All rights reserved.
-//
-
 #include "AnswersWithC.h"
 
 
@@ -295,6 +287,8 @@ void findTheWinnerSelector(void)
 #pragma mark - 20210410
 
 void storeWaterSelector(){
+    
+    int storeWater(int* bucket, int bucketSize, int* vat, int vatSize);
     int a[3] = {9,1,1};
     int b[3] = {9,0,2};
 

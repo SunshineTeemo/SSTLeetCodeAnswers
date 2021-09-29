@@ -1,17 +1,16 @@
-//
-//  main.swift
-//  SSTLeetCodeAnswers
-//
-//  Created by 梅琰培 on 9/1/20.
-//  Copyright © 2020 SunshineTeemo. All rights reserved.
-//
-
 import Foundation
 
 //调用方法的入口
 maxValue2Selector()
 
 testBubbleSort()
+
+
+
+
+
+
+
 
 //MARK:- 204.计数质数
 //https://leetcode-cn.com/problems/count-primes/
