@@ -1,10 +1,9 @@
 import Foundation
 
 //调用方法的入口
-maxValue2Selector()
+//testBubbleSortAlgorithm()
 
 testBubbleSort()
-
 
 
 

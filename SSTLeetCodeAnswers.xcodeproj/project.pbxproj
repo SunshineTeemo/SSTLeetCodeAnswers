@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		936D958424FE3CDE00B11435 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D958324FE3CDE00B11435 /* main.swift */; };
 		936D958D24FE3E6900B11435 /* AnswersWithC.c in Sources */ = {isa = PBXBuildFile; fileRef = 936D958C24FE3E6900B11435 /* AnswersWithC.c */; };
+		D54A2AEA27070A4A005D664D /* BasicOperation.c in Sources */ = {isa = PBXBuildFile; fileRef = D54A2AE927070A4A005D664D /* BasicOperation.c */; };
 		D5C3AA0127041A340079E403 /* BasicSortAlgorithm.c in Sources */ = {isa = PBXBuildFile; fileRef = D5C3AA0027041A340079E403 /* BasicSortAlgorithm.c */; };
 		D5EB504F26E738A000B34CE4 /* BasicSortAlgorithm .swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EB504E26E738A000B34CE4 /* BasicSortAlgorithm .swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,8 @@
 		936D958A24FE3E6900B11435 /* SSTLeetCodeAnswers-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SSTLeetCodeAnswers-Bridging-Header.h"; sourceTree = "<group>"; };
 		936D958B24FE3E6900B11435 /* AnswersWithC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnswersWithC.h; sourceTree = "<group>"; };
 		936D958C24FE3E6900B11435 /* AnswersWithC.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = AnswersWithC.c; sourceTree = "<group>"; };
+		D54A2AE827070A4A005D664D /* BasicOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicOperation.h; sourceTree = "<group>"; };
+		D54A2AE927070A4A005D664D /* BasicOperation.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = BasicOperation.c; sourceTree = "<group>"; };
 		D5C3A9FF27041A340079E403 /* BasicSortAlgorithm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicSortAlgorithm.h; sourceTree = "<group>"; };
 		D5C3AA0027041A340079E403 /* BasicSortAlgorithm.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = BasicSortAlgorithm.c; sourceTree = "<group>"; };
 		D5EB504E26E738A000B34CE4 /* BasicSortAlgorithm .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BasicSortAlgorithm .swift"; sourceTree = "<group>"; };
@@ -81,6 +84,8 @@
 				D5C3AA0027041A340079E403 /* BasicSortAlgorithm.c */,
 				936D958B24FE3E6900B11435 /* AnswersWithC.h */,
 				936D958C24FE3E6900B11435 /* AnswersWithC.c */,
+				D54A2AE827070A4A005D664D /* BasicOperation.h */,
+				D54A2AE927070A4A005D664D /* BasicOperation.c */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 				D5EB504F26E738A000B34CE4 /* BasicSortAlgorithm .swift in Sources */,
 				D5C3AA0127041A340079E403 /* BasicSortAlgorithm.c in Sources */,
 				936D958D24FE3E6900B11435 /* AnswersWithC.c in Sources */,
+				D54A2AEA27070A4A005D664D /* BasicOperation.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
